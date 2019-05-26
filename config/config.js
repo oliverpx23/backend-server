@@ -1,0 +1,1 @@
+module.exports.SEED = 'ClaveTokenxD749';
