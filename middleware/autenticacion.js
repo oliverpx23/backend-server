@@ -7,7 +7,7 @@ exports.verificaToken = function(req,resp,next) {
     var token = req.query.token;
     jwt.verify(token, SEED, (err,decoded) => {
         if(err) {
-            return res.status(401).json({
+            return resp.status(401).json({
                 ok: false,
                 mensaje: 'Token invalido',
                 errors: err
