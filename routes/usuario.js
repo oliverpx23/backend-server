@@ -1,10 +1,7 @@
 var express = require('express');
 var bcrypt = require('bcryptjs');
-
 var mdAutenticacion = require('../middleware/autenticacion');
-
 var app = express();
-
 var Usuario = require('../models/usuario');
 
 //======================================
@@ -47,13 +44,15 @@ app.get('/', (req, res) => {
 // Verificar Token
 //======================================
 
+
 // se creo en un archivo separado llamado middleware, mdAutenticacion
 
 
 //======================================
 // Insertar usuarios
 //======================================
-app.post('/', mdAutenticacion.verificaToken, (req, res) => {
+
+app.post('/',  (req, res) => {
     var body = req.body;
 
     var usuario = new Usuario({
@@ -89,7 +88,7 @@ app.post('/', mdAutenticacion.verificaToken, (req, res) => {
 // Actualizar usuarios
 //======================================
 
-app.put('/:id', (req, res) => {
+app.put('/:id', mdAutenticacion.verificaToken, (req, res) => {
     var id = req.params.id;
     var body = req.body;
 
@@ -171,9 +170,6 @@ app.delete('/:id', (req, resp) => {
 
     });
 });
-
-
-
 
 
 module.exports = app;

@@ -52,6 +52,7 @@ app.post('/google', async (req,resp) => {
 
 
     Usuario.findOne({email: googleUser.email}, (err,usuarioDB) => {
+        
         if(err) {
             return resp.status(500).json({
                 ok: false,
@@ -59,7 +60,6 @@ app.post('/google', async (req,resp) => {
                 errors: err
             });
         }
-
 
         if(usuarioDB) {
             if  ( usuarioDB.google === false ) {
