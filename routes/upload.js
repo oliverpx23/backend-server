@@ -87,7 +87,7 @@ function subirPorTipo( tipo, id, nombreArchivo, res ) {
                 });  
             }
 
-            if(!medico) {
+            if(!usuario) {
                 return res.status(400).json({
                     ok: false,
                     mensaje: 'No existe el usuario',
